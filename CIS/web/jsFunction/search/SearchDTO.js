@@ -35,6 +35,7 @@ function DTOSearchCode(){
             var dtoGnr = array_data[1];
             var dtoQty = array_data[2];
             var dtoPackage = array_data[3];
+            var dtoStrength = array_data[4];
             console.log(dtoCode);
             
             if(dtoGnr===""){
@@ -44,6 +45,8 @@ function DTOSearchCode(){
             $('#dtoCode').val(dtoCode.trim());
             $('#drugNameDTO').val(dtoGnr.trim());
             $('#drugQtyDTO').val(dtoQty.trim());
+            $('#drugStrDTO').val(dtoStrength.trim());
+            $('#doseDTO').val();
             $('#pack').val(dtoPackage);
 
           }

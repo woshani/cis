@@ -13,7 +13,7 @@
     String id = request.getParameter("id");
     
     //id.toLowerCase();
-    String searchProblem = "select ud_mdc_code,d_gnr_name,d_stock_qty,d_packaging from pis_mdc2 where d_trade_name = '" + id + "' ";
+    String searchProblem = "select ud_mdc_code,d_gnr_name,d_stock_qty,d_packaging,d_strength from pis_mdc2 where d_trade_name = '" + id + "' ";
     ArrayList<ArrayList<String>> search = Conn.getData(searchProblem);
     if (search.size() > 0) {
         

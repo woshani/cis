@@ -66,7 +66,7 @@
                     </div>
                     <div class="col-xs-4 col-sm-4 col-md-4">
                         <div class="form-group">
-                            <input class="form-control input-lg" type="text" name="d_strength" id="drugStrDTO" placeholder="">
+                            <input class="form-control input-lg" type="text" name="d_strength" id="drugStrDTO" placeholder="" readonly="">
                         </div>
                     </div>
                     <div class="col-xs-2 col-sm-2 col-md-2">
@@ -76,7 +76,7 @@
                     </div>
                     <div class="col-xs-4 col-sm-4 col-md-4">
                         <div class="form-group">
-                            <input class="form-control input-lg" type="text" name="dose" id="doseDTO" placeholder="">
+                            <input class="form-control input-lg" type="text" name="dose" id="doseDTO" placeholder="" readonly="">
                         </div>
                     </div>
 

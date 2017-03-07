@@ -137,28 +137,39 @@ $(document).ready(function(){
     //---------------------------------------------------------------------------------------------Second Opinion 
     
     //js ADD for Second opinion
-    $('#acceptBtnSOF').click(function (e) {
+    $('#acceptBtn11').click(function (e) {
         e.preventDefault();
-
-        var Problem10 = $('#Problem10').val();
+        
+        var hfcName =$('#hfc').val();
+        var hfcCode =$('#hfc1').val();
+        var disName =$('#hfcDiscipline').val();
+        var disCode=$('#disciplin_cd').val();
+        var doctorName=$('#Searchdoctor').val();
+        var doctorCode=$('#user_id').val();
+        
         var comment10 = $('#comment10').val();
-        var $items = $('#Problem10, #comment10');
-        var obj1 = {};
+        var $items = $('#hfc, #hfc1,#hfcDiscipline,#disciplin_cd,#Searchdoctor,#user_id,#comment10');
+        var obj1 = {Acode:'SOP'};
         $items.each(function () {
-            obj1[this.id] = $(this).val();
+            obj1[this.id] = $.trim($(this).val());
         });
 
         _data.push(obj1);
 
         console.log(_data);
 
-        var _tr = '<tr data-status="pagado" ><td><div class="ckbox"><input type="checkbox" id="checkbox1"><label for="checkbox1"></label></div></td><td><div class="media"><div class="media-body">Second Opinion :<p class="summary" id="sum' + i + '">' + Problem10 + '| ' + comment10 + '</p></div></div></td><td><a data-toggle="modal"  data-target="#update_CIS040005" href="" class="updateSOF" id="row|' + i + '"><i class="fa fa-pencil-square-o" aria-hidden="true" style="display: inline-block;font-size: 30px;color: #337ab7;" ></i></a></a></td><td><a href="javascript:;" class="star"><a href="#" class="deleteBtn11" id="row|' + i + '"><i class="fa fa-times" aria-hidden="true" style="display: inline-block;font-size: 30px;color: #d9534f;"></i></a></a></td></tr>';
+        var _tr = '<tr data-status="pagado" ><td><div class="ckbox"><input type="checkbox" id="checkbox1"><label for="checkbox1"></label></div></td><td><div class="media"><div class="media-body">Second Opinion :<p class="summary" id="sum' + i + '">' + hfcName + '| Discipline: ' + disName + '| Doctor: ' + doctorName +'| Comments: '+ comment10+'</p></div></div></td><td><a data-toggle="modal"  data-target="#CIS040005" href="" class="updateSOF" id="row|' + i + '"><i class="fa fa-pencil-square-o" aria-hidden="true" style="display: inline-block;font-size: 30px;color: #337ab7;" ></i></a></a></td><td><a href="javascript:;" class="star"><a href="#" class="deleteBtn11" id="row|' + i + '"><i class="fa fa-times" aria-hidden="true" style="display: inline-block;font-size: 30px;color: #d9534f;"></i></a></a></td></tr>';
 
         $('#consultationNotes').append(_tr);
         console.log(i);
         i = i + 1;
 
-        $("#Problem10").val("");
+        $('#hfc').val("");
+        $('#hfc1').val("");
+        $('#hfcDiscipline').val("");
+        $('#disciplin_cd').val("");
+        $('#Searchdoctor').val("");
+        $('#user_id').val("");
         $("#comment10").val("");
 
         $("#CIS040005").modal('toggle');
@@ -171,25 +182,49 @@ $(document).ready(function(){
         var idName = $(this).get(0).id;
         var id = idName.split("|");
         var updateObj = _data[id[1]];
+        console.log("_data: " );
         console.log(_data);
-        $('#PProblem10').val(updateObj.Problem10);
-        $('#Pcomment10').val(updateObj.comment10);
+        $('#hfc').val(updateObj.hfc);
+        $('#hfc1').val(updateObj.hfc1);
+        $('#hfcDiscipline').val(updateObj.hfcDiscipline);
+        $('#disciplin_cd').val(updateObj.disciplin_cd);
+        $('#Searchdoctor').val(updateObj.Searchdoctor);
+        $('#user_id').val(updateObj.user_id);
+        $("#comment10").val(updateObj.comment10);
+        
+        
+//        $('#PProblem10').val(updateObj.Problem10);
+//        $('#Pcomment10').val(updateObj.comment10);
         $('#jsonId').val(id[1]);
         //$(this).closest('tr').remove();
 
     });
 
-    $('#updateSOF').click(function () {
+    $('#updateBtn11').click(function () {
         var upObject = _data[$('#jsonId').val()];
         var rowId = $('#jsonId').val();
-        var _PProblem10 = $('#PProblem10').val();
-        var _Pcomment10 = $('#Pcomment10').val();
-        upObject.Problem10 = _PProblem10;
-        upObject.comment10 = _Pcomment10;
-        var sum = _PProblem10 + '| ' + _Pcomment10
+        
+        var UhfcName =$('#hfc').val();
+        var UhfcCode =$('#hfc1').val();
+        var UdisName =$('#hfcDiscipline').val();
+        var UdisCode=$('#disciplin_cd').val();
+        var UdoctorName=$('#Searchdoctor').val();
+        var UdoctorCode=$('#user_id').val();
+       var Ucomment10 = $('#comment10').val();
+       
+        upObject.hfc = UhfcName;
+        upObject.hfc1 = UhfcCode;
+        upObject.hfcDiscipline = UdisName;
+        upObject.disciplin_cd = UdisCode;
+        upObject.Searchdoctor = UdoctorName;
+        upObject.user_id = UdoctorCode;
+        upObject.comment10 = Ucomment10;
+        
+        
+        var sum = UhfcName + '| Discipline: ' + UdisName + '| Doctor: ' + UdoctorName +'| Comments: '+ Ucomment10;
 
         $('#sum' + rowId).html(sum);
-        $("#update_CIS040005").modal('toggle');
+        $("#CIS040005").modal('toggle');
  
     });
 
