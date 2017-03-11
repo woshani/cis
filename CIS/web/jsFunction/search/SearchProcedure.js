@@ -108,7 +108,7 @@ function UsearchPOStype(){
                                 $('#matchList li').on('click', function () { // When click on an element in the list
                                     $('#PProblem19').val($(this).text()); // Update the field with the new element
                                     $('#match19').text(''); // Clear the <div id="match"></div>
-                                    UsearchPOStype()
+                                    UsearchPOStype();
                                 });
                             },
                             error: function () { // if error
